@@ -648,7 +648,7 @@ export class SimpleBulkEditService implements IBulkEditService {
 		let totalEdits = 0;
 		let totalFiles = 0;
 		edits.forEach((edits, model) => {
-			model.applyEdits(edits.map(edit => EditOperation.replaceMove(Range.lift(edit.range), edit.text)));
+			model.pushEditOperations([], edits.map(edit => EditOperation.replaceMove(Range.lift(edit.range), edit.text)), () => []);
 			totalFiles += 1;
 			totalEdits += edits.length;
 		});
